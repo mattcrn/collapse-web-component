@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- To prevent flickering when the document is loaded but them component isn't hide the webcomponent until it is loaded -->
+    <collapse-component open-text="Read more" close-text="Read less" style="display: none; width: 600px">
+        <span slot="collapse-content">
+            <h2>Lorem ipsum dolor</h2>
+            <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+            <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </span>
+    </collapse-component>
+    <template id="collapse">
+            <style>
+                :host {
+                    display: block !important;
+                    font-family: arial;
+                    background-color: #b05656;
+                    color: white;
+                    padding: 20px;
+                }
+                #trigger {
+                    display: none;
+                }
+
+                label {
+                    cursor: pointer;
+                    font-weight: bold;
+                    font-size: 20px;
+                    display: flex;
+                    align-items: center;
+                    user-select: none;
+                }
+
+                .label-icon {
+                    font-size: 28px;
+                    margin-left: 10px;
+                }
+        
+                .container {
+                    height: 0;
+                    overflow: hidden;
+                    transition: height 0.5s ease;
+                }
+
+                .content {
+                    padding: 5px;
+                }
+        
+            </style>
+            <input type="checkbox" name="" id="trigger">
+            <label for="trigger">
+                <span class="label-text">Read more!</span>
+                <span class="label-icon">+</span>
+            </label>
+            <div class="container">
+                <div class="content">
+                    <slot name="collapse-content">This is the collapse content</slot>
+                </div>
+            </div>
+        
+        </template>
+
+</body>
+<script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+<script src="collapse.js"></script>
+
+</html>
